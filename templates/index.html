@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidTalk</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <span>VidTalk</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="input-panel">
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="single_url">
+                    <i class="fas fa-link"></i> Video URL
+                </button>
+                <button class="mode-btn" data-mode="playlist">
+                    <i class="fas fa-list"></i> Playlist
+                </button>
+                <button class="mode-btn" data-mode="topic">
+                    <i class="fas fa-search"></i> Search Topic
+                </button>
+                <button class="mode-btn" data-mode="upload">
+                    <i class="fas fa-upload"></i> Upload File
+                </button>
+            </div>
+
+            <div class="input-section">
+                <input type="text" id="inputValue" placeholder="Enter YouTube URL..." class="form-input">
+                
+                <div class="file-upload-wrapper" style="display: none;">
+                    <input type="file" id="fileUpload" accept="audio/*,video/*">
+                    <label for="fileUpload" class="file-upload-label">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Choose a file</span>
+                    </label>
+                </div>
+                
+                <button id="startBtn" class="action-btn">
+                    <i class="fas fa-play"></i> Process
+                </button>
+            </div>
+
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-info">
+                    <span id="currentFile">Ready to process</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-panel" id="chatPanel">
+            <div class="chat-header">
+                <i class="fas fa-robot"></i>
+                <h2>Chatbot</h2>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Welcome! Please process a video or voice, then ask me questions about it.
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userMessage" placeholder="Type your question...">
+                <button id="startVoiceBtn" class="chat-btn">
+                    <i class="fas fa-microphone-alt"></i>
+                </button>
+                <button id="sendMessageBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
